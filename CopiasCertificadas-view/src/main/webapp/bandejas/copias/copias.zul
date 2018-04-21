@@ -1,0 +1,32 @@
+<?page title="MIS COPIAS" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window border="none" width="100%" height="100%"
+apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.bandejas.CopiasBandejasVM')">
+	<borderlayout>
+		<center>
+			<div>
+				<menubar>					
+					<menuitem label="NUEVO" onClick="@command('newCopia')" />					
+				</menubar>	
+				<grid width="100%" model="@load(vm.lista)" height="100%" autopaging="true" mold="paging" pageSize="20"  
+				 rowRenderer="org.CopiasCertificadas.view.vm.bandejas.RowRendererBandejaCopias">
+					<auxhead>
+						<auxheader label="MIS COPIAS" colspan="9" align="center"/>
+					</auxhead>
+					<columns>
+						<column label="ID" align="center" width="5%"/>
+						<column label="FOLIO" align="center" width="20%"/>
+						<column label="FECHA" align="center" width="11%"/>
+						<column label="TIPO DE COPIA" align="center"  width="25%"/>
+						<column label="ESTATUS" align="center" width="10%"/>
+						<column label="VER" align="center" width="5%"/>
+						<column label="EDITAR" align="center" width="8%"/>
+						<column label="ELIMINAR" align="center" width="9%"/>
+						<column label="PRESENTAR" align="center" width="9%"/>
+					</columns>
+				</grid>
+			</div>
+		</center>
+	</borderlayout>
+</window>
+</zk>

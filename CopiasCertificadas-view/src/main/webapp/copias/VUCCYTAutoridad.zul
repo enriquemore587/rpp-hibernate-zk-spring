@@ -1,0 +1,209 @@
+<?page title="CPRepresentante" contentType="text/html;charset=UTF-8"?>
+<zk>
+<panel title="VUCCYT AUTORIDAD" border="normal" height="100%" width="100%"
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.VUCCYTAutoridadVM')" apply="org.zkoss.bind.BindComposer">
+<panelchildren>
+<borderlayout>
+	<center  border="none">
+		<tabbox id="tb" width="100%" height="100%" mold="accordion">
+		    <tabs>
+		        <tab label="DATOS DE AUTORIDAD" />
+		        <tab label="CONTACTO DE AUTORIDAD" />
+		        <tab label="DATOS DE COPIAS CERTIFICADAS" />
+		        <tab label="PAGOS" />
+		    </tabs>
+		    <tabpanels>
+		        <tabpanel>
+		            <grid>
+		                <columns>
+		                    <column hflex="1" label="DESCRIPCION" align="center" />
+		                    <column hflex="3" label="DATOS" align="left" />
+		                </columns>
+		                <rows>
+		                    <row>
+		                        <label value="NOMBRE DE AUTORIDAD O JUZGADO" />
+		                        <textbox id="txtNombreAutoridad" width="100%" tabindex="1" focus="true"/>
+		                    </row>
+		                    <row>
+		                        <label value="NOMBRE DE NOTARIO (AUTORIDAD O JUZGADO)" />
+		                        <textbox id="txtNombreNotarioAutoridad" width="100%" tabindex="1" />
+		                    </row>
+		                    <row>
+		                        <label value="FECHA DE ESCRITURACION" />
+		                        <vlayout>
+							            <datebox id="fechaEscrituracion" cols="12" format="yyyy-MM-dd" onCreate="self.value = new Date()" />
+							            ( YYYY-MM-DD )
+						            </vlayout>
+		                    </row>
+
+		                    <row>
+		                        <label value="FECHA DE OFICIO" />
+		                        <vlayout>
+							            <datebox id="fechaOficio" cols="12" format="yyyy-MM-dd" onCreate="self.value = new Date()" />
+							            ( YYYY-MM-DD )
+						            </vlayout>
+		                    </row>
+		                    <row>
+		                    	<label value="NUMERO DE OFICIO"/>
+		                    	<textbox id="txtNumeroOficio" width="100%" tabindex="1" />
+		                    </row>
+		                    <row>
+		                    	<label value="NUMERO DE ESCRITO"/>
+		                    	<textbox id="txtNumeroEscrito" width="100%" tabindex="1" />
+		                    </row>
+		                    <row>
+		                    	<label value="VOLUMEN"/>
+		                    	<textbox id="txtVolumen" width="100%" tabindex="1" />
+		                    </row>
+		                </rows>
+		            </grid>
+		        </tabpanel>
+		        <tabpanel>
+		            <grid>
+		            	<columns>
+		            		<column hflex="1" label="DESCRIPCION" align="center" />
+		                    <column hflex="3" label="DATOS" align="left" />
+		            	</columns>
+		            	<rows>
+		            		<row>
+		            			<label value="CALLE"/>
+		            			<textbox id="txtCalle" width="100%" tabindex="1" />
+		            		</row>
+		            		<row>
+		            			<label value="NUMERO"/>
+		            			<div>            				
+			            				<label value="NUM. EXTERIOR" />
+					           			<textbox id="txtNumExterior" width="35%"/>
+					           					           			
+					           			<label value="NUM. INTERIOR" />
+					           			<textbox id="txtNumInterior" width="35%"/>		           			
+		            			</div>
+		            		</row>
+		            		<row>
+		            			<label value="COLONIA"/>
+		            			<textbox id="txtColonia" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="DELEGACION"/>
+		            			<textbox id="txtDelegacion" width="100%"/>
+		            		</row>
+		            		<row>
+		            			<label value="CODIGO POSTAL"/>
+		            			<textbox id="txtCodigoPostal" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="E-MAIL"/>
+		            			<textbox id="txtEmail" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="TELEFONO"/>
+		            			<textbox id="txtTelefono" width="100%"/>
+		            		</row>
+		            	</rows>
+		            </grid>
+		        </tabpanel>
+		        <tabpanel>
+		            <grid mold="paging" pageSize="6">
+		            	<columns>
+		            		<column hflex="1" label="DESCRIPCION" align="center" />
+		                    <column hflex="3" label="DATOS" align="left" />
+		            	</columns>
+		            	<rows>
+		            		<row>
+		                    	<label value="MODALIDAD DEL TRAMITE A REALIZAR"/>
+		                    	<listbox id="selectModalidad" mold="select">
+		                    		<listitem label="EXPEDICION DE TESTIMONIO EN SU ORDEN DE INSTRUMENTO NOTARIAL"/>
+		                    		<listitem label="EXPEDICION DE TESTIMONIO PARA EFECTOS DE INSCRIPCION DE INSTRUMENTO NOTARIAL"/>
+		                    		<listitem label="EXPEDICION DE COPIA CERTIFICADA DE INSTRUMENTO NOTARIAL"/>
+		                    		<listitem label="EXPEDICION DE COPIA SIMPLE DE INSTRUMENTO NOTARIAL"/>
+		                    	</listbox>
+		                    </row>
+		                    <row>
+		            			<label value=""/>
+		            			<textbox id="txtNumeroInstrumento" width="100%"/>
+		            		</row>
+		                    <row>
+		                    	<label value=""/>
+		            			<hlayout>
+						            <datebox id="fechaOtorgamiento" cols="12" format="yyyy-MM-dd" onCreate="self.value = new Date()" />
+						            ( YYYY-MM-DD )
+					            </hlayout>
+		                    </row>
+		            		<row>
+		            			<label value=""/>
+		            			<textbox id="txtNombreNotarioInstrumento" width="100%"/>
+		            		</row>
+		            		<row>
+		            			<label value=""/>
+		            			<textbox id="txtPaternoNotarioInstrumento" width="100%"/>
+		            		</row>
+		            		<row>
+		            			<label value=""/>
+		            			<textbox id="txtMaternoNotarioInstrumento" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="NUMERO DE NOTARIO (INSTRUMENTO)"/>
+		            			<textbox id="txtNumeroNotarioInstrumento" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="NUMERO DE NOTARIA (INSTRUMENTO)"/>
+		            			<textbox id="txtNumeroNotariaInstrumento" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="NUMERO DE ASOCIADO (INSTRUMENTO)"/>
+		            			<textbox id="txtNumeroAsociadoInstrumento" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="NUMERO DE SUPLENTE (INSTRUMENTO)"/>
+		            			<textbox id="txtNumeroSuplenteInstrumento" width="100%"/>
+		            		</row>
+		            		
+		            		<row>
+		            			<label value="OTORGANTES (INSTRUMENTO)"/>
+		            			<textbox id="txtOtorgantesInstrumento" width="100%"/>
+		            		</row>
+		            	</rows>
+		            </grid>
+		        </tabpanel>
+		        <tabpanel>
+		        	<grid>
+		            	<columns>
+		            		<column hflex="2" label="DESCRIPCION" align="center" />
+		                    <column hflex="2" label="CANTIDAD" align="left" />
+		                    <column hflex="3" label="FECHA DE PAGO" align="left" />
+		                    <column hflex="2" label="LINEA DE CAPTURA" align="left" />
+		                    <column hflex="1" label="AGREGAR" align="left" />
+		            	</columns>
+		            	<rows>
+		            		<row>
+		            			<label value="AGREGAR PAGO"/>
+		            			<hlayout>
+			            			<doublespinner id="txtPago" value="00.00" hflex="1" step="0.1" />
+		            			</hlayout>
+		            			<hlayout>
+		            				<label value="FECHA DE PAGO"/>
+			            			<vlayout>
+							            <datebox id="fechaPago" cols="12" format="yyyy-MM-dd" onCreate="self.value = new Date()" />
+							            ( YYYY-MM-DD )
+						            </vlayout>
+		            			</hlayout>
+		            			<textbox id="txtLineaCAptura" width="100%"/>
+		            			<button id="btnAgregar" label="AGREGAR"/>
+		            		</row>
+		            	</rows>
+		            </grid>
+		        </tabpanel>
+		    </tabpanels>
+		</tabbox>
+	</center>
+</borderlayout>
+</panelchildren>
+</panel>
+</zk>

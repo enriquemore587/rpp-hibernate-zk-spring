@@ -1,0 +1,156 @@
+<?page title="Ventanilla Copias Certificadas" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style>
+	.cyan{
+		border:1px solid cyan;
+	}
+	
+	.blue{
+		border:1px solid blue;
+	}
+</style>
+<panel title="VUCCYT - PERSONA FISICA" border="normal" height="100%" width="100%"
+apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.VUCCYTPersonaFisicaVM')">
+<panelchildren>
+	<borderlayout >
+	<center  border="none" autoscroll="true">
+		<div align="center" width="90%">
+			<space height="10px"/>
+			<grid>
+				<auxhead sclass="blue">
+					<auxheader label='"DATOS"	PERSONA FISICA' align="center" colspan="5" rowspan="1"/>
+				</auxhead>
+				<columns>
+		            <column label="NOMBRE" align="center"/>
+		            <column label="APELLIDO PATERNO" align="center"/>
+		            <column label="APELLIDO MATERNO" align="center"/>
+		            <column label="IDENTIFICACION" align="center"/>
+		            <column label="FOLIO" align="center"/>
+		        </columns>
+		        <rows>
+		        	<row>
+		        		<textbox width="100%" focus="true" placeholder="NOMBRE (S)"/>
+			        	<textbox width="100%" placeholder="A. PATERNO"/>
+			        	<textbox width="100%" placeholder="A. MATERNO"/>
+			        	<listbox mold="select" width="100%">
+	                   		<listitem label="INE / IFE" value="INE / IFE"/>
+	                   		<listitem label="CARTILLA MILITAR" value="CARTILLA MILITAR"/>
+	                   		<listitem label="PASAPORTE" value="PASAPORTE"/>
+	                   	</listbox>
+	                   	<textbox width="100%" placeholder="000000000000"/>
+		        	</row>
+		        </rows>
+			</grid>
+			<space height="10px"/>
+			<grid>
+				<auxhead>
+					<auxheader label='DOMICILIO PARA OIR Y RECIBIR NOTIFICACIONES Y DOCUMENTOS EN LA CDMX' align="center" colspan="4"/>
+				</auxhead>
+				<columns>
+					<column label="Calle" align="center"/>
+					<column label="NUM. EXTERIOR" align="center"/>
+					<column label="NUM. INTERIOR" align="center"/>
+					<column label="COLONIA" align="center"/>
+				</columns>
+				<rows>
+					<row>
+						<textbox width="100%" placeholder="CALLE"/>
+			        	<textbox width="100%" placeholder="1"/>
+			        	<textbox width="100%" placeholder="2"/>
+			        	<textbox width="100%" placeholder="COLONIA"/>
+					</row>
+				</rows>
+			</grid>
+			<grid>
+				<columns>
+					<column label="DELEGACIÓN" align="center"/>
+					<column label="CODIGO POSTAL" align="center"/>
+					<column label="E-MAIL" align="center"/>
+					<column label="TELEFONO" align="center"/>
+				</columns>
+				<rows>
+					<row>
+						<textbox width="100%" placeholder="DELEGACION"/>
+			        	<textbox width="100%" placeholder="CODIGO POSTAL"/>
+			        	<textbox width="100%" placeholder="ejemplo@ejemplo.com"/>
+			        	<textbox width="100%" placeholder="1234-5678"/>
+					</row>
+				</rows>
+			</grid>
+			<space height="10px"/>
+			<grid>
+				<auxhead>
+					<auxheader label='DATOS DE TRAMITE' align="center" colspan="5" rowspan="1"/>
+				</auxhead>
+				<auxhead sclass="category-center">
+		            <auxheader label="MODALIDAD" align="center" colspan="1" rowspan="1" />
+		            <auxheader colspan="4" rowspan="1">
+		                <combobox model="@load(vm.modalidades)" value="" width="100%" readonly="true"/>
+		            </auxheader>
+		        </auxhead>
+		        <auxhead>
+					<auxheader label='DATOS DEL INSTRUMENTO' align="center" colspan="5" rowspan="1"/>
+				</auxhead>
+				<auxhead>
+					<auxheader colspan="1" label="NUM. NOTARIA" align="center"/>
+					<auxheader colspan="1" label="NOMBRE (S)" align="center"/>
+					<auxheader colspan="1" label="A. PATERNO" align="center"/>
+					<auxheader colspan="1" label="A. MATERNO" align="center"/>
+					<auxheader colspan="1" label="NUM. NOTARIO" align="center"/>
+				</auxhead>
+				<auxhead>
+					<auxheader><textbox width="100%" placeholder="NUM. NOTARIA"/>
+					</auxheader>
+					
+					<auxheader><textbox width="100%" placeholder="NOTARIO"/>
+					</auxheader>
+					
+					<auxheader><textbox width="100%" placeholder="NOTARIO"/>
+					</auxheader>
+					
+					<auxheader><textbox width="100%" placeholder="NOTARIO"/>
+					</auxheader>
+					
+					<auxheader><textbox width="100%" placeholder="NUM. NOTARIO"/>
+					</auxheader>
+				</auxhead>
+				<auxhead sclass="category-center">
+		            <auxheader colspan="1" rowspan="1">
+		            	<datebox width="100%" placeholder="FECHA OTORGAMIENTO" readonly="true"/>
+		            </auxheader>
+		            <auxheader colspan="1" rowspan="1">
+		                <textbox width="100%" placeholder="NUM. INSTRUMENTO"/>
+		            </auxheader>
+		            <auxheader colspan="1" rowspan="1">
+		            	<textbox width="100%" placeholder="NUM. VOLUMEN"/>
+		            </auxheader>
+		            <auxheader colspan="1" rowspan="1">
+		                <textbox width="100%" placeholder="NUM. SUPLENTE"/>
+		            </auxheader>
+		            <auxheader colspan="1" rowspan="1">
+		                <textbox width="100%" placeholder="NUM. ASOCIADO"/>
+		            </auxheader>
+		        </auxhead>
+				<columns>
+		            <column label="" align="center"/>
+		            <column label="" align="center"/>
+		            <column label="" align="center"/>
+		            <column label="" align="center"/>
+		            <column label="" align="center"/>
+		        </columns>
+			</grid>
+		</div>
+	</center>
+	<south height="50px" border="none">
+	
+		<div align="center">
+			<div height="10px"/>
+			<button label="ENVIAR" sclass="blue"/>
+			<space width="50%"/>
+			<button label="LIMPIAR" sclass="cyan"/>
+		</div>
+	</south>
+</borderlayout>
+</panelchildren>
+</panel>
+</zk>

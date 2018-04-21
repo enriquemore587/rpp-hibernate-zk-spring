@@ -1,0 +1,208 @@
+<?page title="Ventanilla Copias Certificadas" contentType="text/html;charset=UTF-8"?>
+<zk>
+<panel title="V U C C Y T - N O T A R I O S" border="normal" height="100%" width="100%"
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.VUCCYTNotarioVM')" 
+apply="org.zkoss.bind.BindComposer, org.CopiasCertificadas.view.vm.lock.MyViewModelLOComposer">
+
+<panelchildren>
+<borderlayout>
+	<center  border="none" autoscroll="true">
+		<div align="center" width="100%">
+			<menubar>
+				<menuitem id="btn1" label="CIUDAD DE MÉXICO" onClick="@command('selectNotario', btn=btn1, div1 = div1,div2 = div2, d=divGeneral)"/>
+				<menuitem id="btn2" label="OTROS ESTADOS" onClick="@command('selectNotario', btn=btn2, div1 = div1,div2 = div2, d=divGeneral)" />
+			</menubar>
+			<div id="divGeneral" visible="false">
+				<div id="div1" visible="false">
+					<space height="30px"/>
+					<groupbox open="true" closable="false">
+						<caption label=". : : N O T A R I O : : ."/>
+						<grid>
+							<auxhead>
+								<auxheader label=". : : N U M  - D E - N O T A R I O : : ." align="center" colspan="1"/>
+								<auxheader colspan="1">
+									<intbox value="@bind(vm.tramite.id_fedatario)" placeholder="NUMERO DE NOTARIO" width="100%"/>
+								</auxheader>
+							</auxhead>
+							
+							<columns>
+								<column  align="center"/>
+								<column  align="center"/>
+							</columns>
+							
+						</grid>
+					</groupbox>
+					<space height="15%"/>
+				</div>
+				<div id="div2" visible="false">
+					<space height="30px"/>
+					<groupbox open="true" closable="false">
+						<caption label=". : : N O T A R I O : : ."/>
+						<grid>
+							<auxhead>
+								<auxheader colspan="1" align="center" label="NUMERO DE NOTARIO"/>
+								<auxheader colspan="1" >
+									<intbox width="100%" value="@bind(vm.tramite.copiaCertificada.notario.numNotario)"/>
+								</auxheader >
+								<auxheader colspan="1" align="center" label="NUMERO DE NOTARÍA"/>
+								<auxheader colspan="1" >
+									<intbox width="100%" value="@bind(vm.tramite.copiaCertificada.notario.numNotaria)"/>
+								</auxheader>
+							</auxhead>
+							<columns>
+					            <column label="NOMBRE NOTARIO" align="center"/>
+					            <column label="A. PATERNO NOTARIO" align="center"/>
+					            <column label="A. MATERNO NOTARIO" align="center"/>
+					            <column label="ENTIDAD" align="center"/>
+					        </columns>
+					        <rows>
+					        	<row>
+					        		<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="NOMBRE (S)" value="@bind(vm.tramite.copiaCertificada.notario.nombre)"/>
+						        	<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="A. PATERNO" value="@bind(vm.tramite.copiaCertificada.notario.paterno)"/>
+						        	<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="A. MATERNO" value="@bind(vm.tramite.copiaCertificada.notario.materno)"/>
+						        	<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="ENTIDAD" value="@bind(vm.tramite.copiaCertificada.notario.entidadLocalidad)"/>
+					        	</row>
+					        </rows>
+						</grid>
+					</groupbox>
+					<space height="30px"/>
+					<groupbox open="true" closable="false">
+						<caption label=". : : D O M I C I L I O - P A R A - O I R - Y - R E C I B I R - N O T I F I C A C I O N E S - Y - D O C U M E N T O S - E N - L A - C D M X : : ."/>
+						<grid>
+							<columns>
+								<column label="Calle" align="center"/>
+								<column label="NUM. EXTERIOR" align="center"/>
+								<column label="NUM. INTERIOR" align="center"/>
+								<column label="COLONIA" align="center"/>
+							</columns>
+							<rows>
+								<row>
+									<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="CALLE" value="@bind(vm.tramite.copiaCertificada.domicilio.calle)"/>
+						        	<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="1" value="@bind(vm.tramite.copiaCertificada.domicilio.num_ext)"/>
+						        	<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="2" value="@bind(vm.tramite.copiaCertificada.domicilio.num_int)"/>
+						        	<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="COLONIA" value="@bind(vm.tramite.copiaCertificada.domicilio.colonia)"/>
+								</row>
+							</rows>
+						</grid>
+					
+						<grid>
+							<columns>
+								<column label="DELEGACIÓN" align="center" value="@bind(vm.tramite.copiaCertificada.domicilio.delegacion)"/>
+								<column label="CODIGO POSTAL" align="center" value="@bind(vm.tramite.copiaCertificada.domicilio.codigo_postal)"/>
+								<column label="E-MAIL" align="center" value="@bind(vm.tramite.copiaCertificada.domicilio.email)"/>
+								<column label="TELEFONO" align="center" value="@bind(vm.tramite.copiaCertificada.domicilio.telefono)"/>
+							</columns>
+							<rows>
+								<row>
+									<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="DELEGACIÓN" value="@bind(vm.tramite.copiaCertificada.domicilio.delegacion)"/>
+									<intbox width="100%" placeholder="CODIGO POSTAL" value="@bind(vm.tramite.copiaCertificada.domicilio.codigo_postal)"/>
+									<textbox width="100%" placeholder="E-MAIL" value="@bind(vm.tramite.copiaCertificada.domicilio.email)"/>
+									<textbox width="100%" onChange="self.setValue(self.getValue().toUpperCase().trim());" placeholder="TELEFONO" value="@bind(vm.tramite.copiaCertificada.domicilio.telefono)"/>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+				</div>
+				<space height="30px"/>
+				<groupbox open="true" closable="false">
+					<caption label=". : : D A T O S - D E - T R A M I T E : : ."/>
+					<grid>
+						<auxhead sclass="category-center">
+				            <auxheader label="MODALIDAD" align="center" colspan="1" rowspan="1" />
+				            <auxheader colspan="4" rowspan="1">
+				                <combobox model="@load(vm.modalidades)" placeholder="S E L E C C I O N A R . . . ."
+				                 value="@bind(vm.tramite.copiaCertificada.modalidad)" width="100%" readonly="true"/>
+				            </auxheader>
+				        </auxhead>
+				        <auxhead>
+							<auxheader label='. : : D A T O S - D E L - I N S T R U M E N T O : : .' align="center" colspan="5" rowspan="1"/>
+						</auxhead>
+						<auxhead>
+							<auxheader colspan="1" label="NUM. NOTARIA" align="center"/>
+							<auxheader colspan="1" label="NOMBRE (S)" align="center"/>
+							<auxheader colspan="1" label="A. PATERNO" align="center"/>
+							<auxheader colspan="1" label="A. MATERNO" align="center"/>
+							<auxheader colspan="1" label="NUM. NOTARIO" align="center"/>
+						</auxhead>
+						<auxhead>
+							<auxheader><intbox width="100%" placeholder="NUM. NOTARIA"
+							 value="@bind(vm.instrumento.num_notaria)"/>
+							</auxheader>
+							
+							<auxheader><textbox width="100%" placeholder="NOTARIO" onChange="self.setValue(self.getValue().toUpperCase().trim());"
+							value="@bind(vm.instrumento.nombre_notario)"/>
+							</auxheader>
+							
+							<auxheader><textbox width="100%" placeholder="NOTARIO" onChange="self.setValue(self.getValue().toUpperCase().trim());"
+							value="@bind(vm.instrumento.paterno_notario)"/>
+							</auxheader>
+							
+							<auxheader><textbox width="100%" placeholder="NOTARIO" onChange="self.setValue(self.getValue().toUpperCase().trim());"
+							value="@bind(vm.instrumento.materno_notario)"/>
+							</auxheader>
+							
+							<auxheader><intbox width="100%" placeholder="NUM. NOTARIO"
+							value="@bind(vm.instrumento.num_notario)"/>
+							</auxheader>
+						</auxhead>
+						<auxhead sclass="category-center">
+				            <auxheader colspan="1" rowspan="1">
+				            	<datebox width="100%" placeholder="FECHA OTORGAMIENTO" readonly="true"
+				            	value="@bind(vm.instrumento.fecha_otorgamiento)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				                <intbox width="100%" placeholder="NUM. INSTRUMENTO"
+				                value="@bind(vm.instrumento.num_instrumento)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				            	<textbox width="100%" placeholder="NUM. VOLUMEN" onChange="self.setValue(self.getValue().toUpperCase().trim());"
+				            	value="@bind(vm.instrumento.volumen)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				                <intbox width="100%" placeholder="NUM. SUPLENTE"
+				                value="@bind(vm.instrumento.num_suplente)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				                <intbox width="100%" placeholder="NUM. ASOCIADO"
+				                value="@bind(vm.instrumento.num_asociado)"/>
+				            </auxheader>
+				        </auxhead>
+						<columns>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				        </columns>
+					</grid>
+				</groupbox>
+				<space height="30px"/>
+				<groupbox open="true" closable="false">
+					<caption label=". : : P A G O S : : ."/>
+					<div align="left">
+						<button label="A G R E G A R - L I N E A - C A P T U R A" onClick="@command('showAddPago')"/>
+						<grid 
+						rowRenderer="org.CopiasCertificadas.view.vm.copias.pagos.RRPagosV_N"
+						model="@load(vm.tramite.listaPagos)"
+						autopaging="true" mold="paging" pageSize="20" height="150px" >
+							<columns>
+								<column label="LINEA DE CAPTURA" align="center"/>
+								<column label="MONTO" align="center"/>
+								<column label="FECHA" align="center"/>
+								<column label="EDITAR" align="center"/>
+								<column label="ELIMINAR" align="center"/>
+							</columns>
+						</grid>
+					</div>	
+				</groupbox>
+				<div align="right">
+					<button id="btnSaveCopiaV_N" label="G U A R D A R - T R A M I T E" onLongOp="@command('saveTramite', div1=div1)"/>
+				</div>
+			</div>
+		</div>
+	</center>
+</borderlayout>
+</panelchildren>
+
+</panel>
+</zk>

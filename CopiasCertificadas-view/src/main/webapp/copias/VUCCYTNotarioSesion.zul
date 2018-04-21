@@ -1,0 +1,128 @@
+<?page title="Ventanilla Copias Certificadas" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+<window id="myW" title="VUCCYT - NOTARIO" border="normal" mode="modal" closable="true" height="90%" width="85%"
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.VUCCYTNotarioVM_Sesion')" 
+apply="org.zkoss.bind.BindComposer, org.CopiasCertificadas.view.vm.lock.MyViewModelLOComposer">
+
+
+<borderlayout>
+	<center  border="none" autoscroll="true">
+		<div align="center" width="100%">
+			<space height="10px"/>
+			
+			<groupbox id="gBox" open="true" >
+			<caption label=". : : N U E V A - C O P I A : : ."/>
+				<grid height="120px" >
+					<auxhead>
+						<auxheader label=". : : D O C U M E N T O S : : ." align="center" colspan="2"/>
+					</auxhead>
+					<auxhead>
+						<auxheader label=". : : N U M  - D E - N O T A R I O : : ." align="center" colspan="1"/>
+						<auxheader colspan="1">
+							<intbox placeholder="NUMERO DE NOTARIO" width="100%" value="@bind(vm.tramite.id_fedatario)" readonly="true"/>
+						</auxheader>
+					</auxhead>
+					<columns>
+						<column  align="center"/>
+						<column  align="center"/>
+					</columns>
+					
+				</grid>
+				<space height="15%"/>
+				<groupbox open="true" closable="false">
+					<caption label='. : : A G R E G A R - D A T O S - D E - N U E V O - T R A M I T E - D E - C O P I A S - C E R T I F I C A D A S : : .'></caption>
+					<grid>
+						<auxhead sclass="category-center">
+				            <auxheader label="MODALIDAD" align="center" colspan="1" rowspan="1" />
+				            <auxheader colspan="4" rowspan="1">
+				                <combobox model="@load(vm.modalidades)"  placeholder="SELECCIONAR. . ." width="100%" readonly="true" value="@bind(vm.tramite.copiaCertificada.modalidad)"/>
+				            </auxheader>
+				        </auxhead>
+				        <auxhead>
+							<auxheader label='DATOS DEL INSTRUMENTO' align="center" colspan="5" rowspan="1"/>
+						</auxhead>
+						<auxhead>
+							<auxheader colspan="1" label="NUM. NOTARIA" align="center"/>
+							<auxheader colspan="1" label="NOMBRE (S)" align="center"/>
+							<auxheader colspan="1" label="A. PATERNO" align="center"/>
+							<auxheader colspan="1" label="A. MATERNO" align="center"/>
+							<auxheader colspan="1" label="NUM. NOTARIO" align="center"/>
+						</auxhead>
+						<auxhead>
+							<auxheader>
+								<intbox width="100%" value="@bind(vm.instrumento.num_notaria)" placeholder="NUM. NOTARIA" />
+							</auxheader>
+							
+							<auxheader>
+								<textbox width="100%" value="@bind(vm.instrumento.nombre_notario)"	placeholder="NOTARIO"  onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+							</auxheader>
+							
+							<auxheader>
+								<textbox width="100%" placeholder="NOTARIO" value="@bind(vm.instrumento.paterno_notario)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+							</auxheader>
+							
+							<auxheader>
+								<textbox width="100%" placeholder="NOTARIO" value="@bind(vm.instrumento.materno_notario)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+							</auxheader>
+							
+							<auxheader>
+								<intbox width="100%" placeholder="NUM. NOTARIO" value="@bind(vm.instrumento.num_notario)" />
+							</auxheader>
+						</auxhead>
+						<auxhead sclass="category-center">
+				            <auxheader colspan="1" rowspan="1">
+				            	<datebox width="100%" placeholder="FECHA OTORGAMIENTO" readonly="true" value="@bind(vm.instrumento.fecha_otorgamiento)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				                <intbox width="100%" placeholder="NUM. INSTRUMENTO" value="@bind(vm.instrumento.num_instrumento)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				            	<textbox width="100%" placeholder="NUM. VOLUMEN" value="@bind(vm.instrumento.volumen)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				                <intbox width="100%" placeholder="NUM. SUPLENTE" value="@bind(vm.instrumento.num_suplente)"/>
+				            </auxheader>
+				            <auxheader colspan="1" rowspan="1">
+				                <intbox width="100%" placeholder="NUM. ASOCIADO" value="@bind(vm.instrumento.num_asociado)"/>
+				            </auxheader>
+				        </auxhead>
+						<columns>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				            <column label="" align="center"/>
+				        </columns>
+					</grid>
+				</groupbox>
+				
+				<groupbox open="true" closable="false">
+					<caption label=". : : P A G O S : : ."/>
+					<div align="left">
+						<button label="AGREGAR" onClick="@command('showAddPago')"/>
+						<grid model="@load(vm.tramite.listaPagos)" rowRenderer="org.CopiasCertificadas.view.vm.copias.RowRendererPagos"
+						autopaging="true" mold="paging" pageSize="20" height="150px" >
+							<columns>
+								<column label="LINEA DE CAPTURA" align="center"/>
+								<column label="MONTO" align="center"/>
+								<column label="FECHA" align="center"/>
+								<column label="EDITAR" align="center"/>
+								<column label="ELIMINAR" align="center"/>
+							</columns>
+						</grid>
+					</div>	
+				</groupbox>
+				<div align="center">
+					<div height="10px"/>
+					<button id="btnSaveCopiaSesion" label="G U A R D A R - T R A M I T E" onLongOp="@command('nuevaCopia')"/>
+				</div>
+			</groupbox>
+			
+		</div>
+	</center>
+</borderlayout>
+
+
+</window>
+</zk>

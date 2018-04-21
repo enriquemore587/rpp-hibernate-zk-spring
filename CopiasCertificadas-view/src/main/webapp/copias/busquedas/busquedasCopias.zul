@@ -1,0 +1,38 @@
+<?page title="Busquedas :: Copias" contentType="text/html;charset=UTF-8"?>
+<zk>
+<panel title="Busquedas :: Copias" border="panel" height="100%" width="100%"
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.busquedas.busquedasCopiasVM')" apply="org.zkoss.bind.BindComposer">
+
+<panelchildren>
+	<borderlayout>
+		<center>
+			<div align="center" width="100%">
+				
+				<groupbox open="true" width="100%" sclass="blue">
+					<caption label="COPIAS CERTIFICADAS"></caption>
+					<grid model="@load(vm.listaTramites)" autopaging="true" mold="paging" pageSize="20"
+					height="700px"
+					rowRenderer="org.CopiasCertificadas.view.vm.copias.busquedas.LoadGridCopiasCertificadas">
+						<columns>
+							<column align="center" label="FOLIO">
+				            </column>
+				            <column align="center" label="ESTATUS">
+				            </column>
+				            <column align="center" label="ESTATUS GESTION">
+				            </column>
+				            <column align="center" label="MODALIDAD">
+				            </column>			            
+				        </columns>
+				        <rows>
+				        	<row>
+				        	</row>
+				        </rows>
+					</grid>
+				</groupbox>
+			</div>
+		</center>
+	</borderlayout>	
+</panelchildren>
+
+</panel>
+</zk>

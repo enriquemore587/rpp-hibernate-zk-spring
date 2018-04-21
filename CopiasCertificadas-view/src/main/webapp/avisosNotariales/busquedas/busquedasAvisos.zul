@@ -1,0 +1,14 @@
+<?page title="Busquedas :: Avisos" contentType="text/html;charset=UTF-8"?>
+<zk>
+<panel title="Busquedas :: Avisos" border="normal"  height="100%" width="100%">
+
+<panelchildren>
+	<borderlayout>
+		<north height="5%" border="none">
+			<div align="center"><label value="BUSQUEDAS"/> <space width="50%"/><label value="AVISOS"/></div>
+		</north>
+	</borderlayout>	
+</panelchildren>
+
+</panel>
+</zk>

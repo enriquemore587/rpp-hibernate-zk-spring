@@ -1,0 +1,26 @@
+<zk>
+	<window border="normal" height="100%" width="100%" closable="true" apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('org.CopiasCertificadas.view.vm.MenuNotasVM')">
+
+					<borderlayout>
+						<north>
+							<div align="center">
+								<image src="/images/rpp/headers/tramites.png"/>
+							</div>
+						</north>
+						
+						<center border="none">
+							<div id="contentDiv" width="100%" height="100%" align="center">
+							</div>
+						</center>
+						
+						<west title="Tramites" width="322px" border="normal" collapsible="true" open="false">
+							<tree id="tree" width="322px" >
+						        <treecols>
+						            <treecol label="" />       
+						        </treecols>
+						    </tree>
+						</west>
+					</borderlayout>			
+	</window>
+</zk>

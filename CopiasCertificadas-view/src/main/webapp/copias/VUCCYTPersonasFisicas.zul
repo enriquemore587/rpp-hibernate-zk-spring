@@ -1,0 +1,214 @@
+<?page title="Ventanilla Copias Certificadas" contentType="text/html;charset=UTF-8"?>
+<zk>
+<panel title="V U C C Y T : : P E R S O N A S - I N T E R E S A D A S " border="normal" height="100%" width="100%" 
+apply="org.zkoss.bind.BindComposer, org.CopiasCertificadas.view.vm.lock.MyViewModelLOComposer" 
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.VUCCYTApoderadoVM')">
+<panelchildren>
+	<borderlayout >
+		<center  border="none" autoscroll="true">
+			<div align="center" width="100%">
+				<label value="TIPO DE PERSONA INTERESADA: "/>
+				<space height="50px"/>
+				<combobox id="cmb" placeholder="S E L E C C I O N A R . . . ." readonly="true" onChange="@command('comenzar',cmb=cmb)"><comboitem label="CIUDADANO"/><comboitem label="REPRESENTANTE LEGAL / ALBACEA"/>
+				</combobox>
+			<div id="div1" visible="false" align="center" width="100%">
+				<space height="30px"/>
+				<groupbox closable="false" width="100%">
+					<caption label='"DATOS"	PERSONA FISICA'></caption>
+					<grid>
+						<columns>
+				            <column label="NOMBRE" align="center"/>
+				            <column label="APELLIDO PATERNO" align="center"/>
+				            <column label="APELLIDO MATERNO" align="center"/>
+				            <column label="IDENTIFICACION" align="center"/>
+				            <column label="FOLIO" align="center"/>
+				        </columns>
+				        <rows>
+				        	<row>
+				        		<textbox width="100%" focus="true" placeholder="NOMBRE (S)" value="@bind(vm.personaFisica.nombre)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+					        	<textbox width="100%" placeholder="A. PATERNO" value="@bind(vm.personaFisica.paterno)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+					        	<textbox width="100%" placeholder="A. MATERNO" value="@bind(vm.personaFisica.materno)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+					        	<combobox model="@load(vm.identificaciones)" placeholder="SELECCIONAR. . ." width="100%" readonly="true" value="@bind(vm.personaFisica.tipoIdentificacion)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+			                   	<textbox width="100%" placeholder="000000000000" value="@bind(vm.personaFisica.folioIdentificacion)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+				        	</row>
+				        </rows>
+					</grid>
+				</groupbox>
+				<space height="30px"/>
+				<groupbox closable="false" width="100%">
+				<caption label="DOMICILIO PARA OIR Y RECIBIR NOTIFICACIONES Y DOCUMENTOS EN LA CDMX"></caption>
+				<grid>
+					
+					<columns>
+						<column label="Calle" align="center"/>
+						<column label="NUM. EXTERIOR" align="center"/>
+						<column label="NUM. INTERIOR" align="center"/>
+						<column label="COLONIA" align="center"/>
+					</columns>
+					<rows>
+						<row>
+							<textbox width="100%" placeholder="CALLE" value="@bind(vm.domicilio.calle)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+				        	<textbox width="100%" placeholder="1" value="@bind(vm.domicilio.num_ext)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+				        	<textbox width="100%" placeholder="2" value="@bind(vm.domicilio.num_int)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+				        	<textbox width="100%" placeholder="COLONIA" value="@bind(vm.domicilio.colonia)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+						</row>
+					</rows>
+				</grid>
+				<grid>
+					<columns>
+						<column label="DELEGACIÓN" align="center"/>
+						<column label="CODIGO POSTAL" align="center"/>
+						<column label="E-MAIL" align="center"/>
+						<column label="TELEFONO" align="center"/>
+					</columns>
+					<rows>
+						<row>
+							<textbox width="100%" placeholder="DELEGACION" value="@bind(vm.domicilio.delegacion)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+				        	<intbox width="100%" placeholder="CODIGO POSTAL" value="@bind(vm.domicilio.codigo_postal)"/>
+				        	<textbox width="100%" placeholder="ejemplo@ejemplo.com" value="@bind(vm.domicilio.email)"/>
+				        	<textbox width="100%" placeholder="1234-5678" value="@bind(vm.domicilio.telefono)"/>
+						</row>
+					</rows>
+				</grid>
+				</groupbox>
+				<space height="30px"/>
+				<div id="divRepresentante" visible="true">
+					<groupbox  closable="false"  width="100%">
+					<caption image="/widgets/event/create_on_demand/img/FirstWindow-24x24.png" label='"DATOS" DE REPRESENTANTE LEGAL'></caption>
+					<grid>
+						<auxhead>
+							<auxheader colspan="1" label="NOMBRE (S)" align="center"/>
+							<auxheader colspan="1" label="A. PATERNO" align="center"/>
+							<auxheader colspan="1" label="A. MATERNO" align="center"/>
+							<auxheader colspan="1" label="IDENTIFICACION" align="center"/>
+							<auxheader colspan="1" label="FOLIO" align="center"/>
+						</auxhead>
+						<auxhead>
+							<auxheader colspan="1">
+								<textbox width="100%" placeholder="NOMBRE" value="@bind(vm.representante_legal.nombre)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+							</auxheader>
+							<auxheader colspan="1">
+								<textbox width="100%" placeholder="A. PATERNO" value="@bind(vm.representante_legal.paterno)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+					        	
+							</auxheader>
+							<auxheader colspan="1">
+								<textbox width="100%" placeholder="A. MATERNO" value="@bind(vm.representante_legal.materno)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+					        	
+							</auxheader>
+							<auxheader colspan="1">
+					        	<combobox model="@load(vm.identificaciones)" placeholder="SELECCIONAR. . ." width="100%" readonly="true" value="@bind(vm.representante_legal.identificacion_oficial)"/>
+							</auxheader>
+							<auxheader colspan="1">
+								<textbox width="100%" placeholder="000000000000" value="@bind(vm.representante_legal.folioIdentificacion)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+							</auxheader>
+						</auxhead>
+						<columns>
+				            <column label="NUM.-escritura,póliza o expediente" align="center"/>
+				            <column label="FECHA" align="center"/>
+				            <column label="NOMBRE" align="center"/>
+				            <column label="ENTIDAD FEDERATIVA" align="center"/>
+				            <column label="NUM.-NOTARÍA-CORREDURIA-JUZGADO" align="center"/>
+				        </columns>
+				        <rows>
+				        	<row>
+				        		<textbox width="100%" placeholder="escritura, póliza o expediente" value="@bind(vm.representante_legal.num_escritura_poliza_exp)"/>
+					        	<datebox width="100%" placeholder="escritura, póliza o expediente" readonly="true" value="@bind(vm.representante_legal.fechaEscrituraPolizaExp)"/>
+					        	<textbox width="100%" placeholder="NOTARIO-CORREDOR-JUEZ" value="@bind(vm.representante_legal.nombre_notario_corredor_juez)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+					        	<textbox width="100%" placeholder="ENTIDAD" value="@bind(vm.representante_legal.entidad_federativa)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+			                   	<intbox width="100%" placeholder="NOTARÍA-CORREDURIA-JUZGADO" value="@bind(vm.representante_legal.nom_notaria_correduria_juzgado)"/>
+				        	</row>
+				        </rows>
+					</grid>
+					</groupbox>
+				</div>
+				<space height="30px"/>
+				<groupbox closable="false" width="100%">
+				<caption label='DATOS DE TRAMITE'></caption>
+				<grid>
+					<auxhead sclass="category-center">
+			            <auxheader label="MODALIDAD" align="center" colspan="1" rowspan="1" />
+			            <auxheader colspan="4" rowspan="1">
+			                <combobox model="@load(vm.modalidades)"  placeholder="SELECCIONAR. . ." width="100%" readonly="true" value="@bind(vm.copiaCertificada.modalidad)"/>
+			            </auxheader>
+			        </auxhead>
+			        <auxhead>
+						<auxheader label='DATOS DEL INSTRUMENTO' align="center" colspan="5" rowspan="1"/>
+					</auxhead>
+					<auxhead>
+						<auxheader colspan="1" label="NUM. NOTARIA" align="center"/>
+						<auxheader colspan="1" label="NOMBRE (S)" align="center"/>
+						<auxheader colspan="1" label="A. PATERNO" align="center"/>
+						<auxheader colspan="1" label="A. MATERNO" align="center"/>
+						<auxheader colspan="1" label="NUM. NOTARIO" align="center"/>
+					</auxhead>
+					<auxhead>
+						<auxheader><textbox width="100%" placeholder="NUM. NOTARIA"  value="@bind(vm.instrumento.num_notaria)"/>
+						</auxheader>
+						
+						<auxheader><textbox width="100%" placeholder="NOTARIO" value="@bind(vm.instrumento.nombre_notario)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+						</auxheader>
+						
+						<auxheader><textbox width="100%" placeholder="NOTARIO" value="@bind(vm.instrumento.paterno_notario)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+						</auxheader>
+						
+						<auxheader><textbox width="100%" placeholder="NOTARIO" value="@bind(vm.instrumento.materno_notario)" onChange="self.setValue(self.getValue().toUpperCase().trim());"/>
+						</auxheader>
+						
+						<auxheader><textbox width="100%" placeholder="NUM. NOTARIO" value="@bind(vm.instrumento.num_notario)"/>
+						</auxheader>
+					</auxhead>
+					<auxhead sclass="category-center">
+			            <auxheader colspan="1" rowspan="1">
+			            	<datebox width="100%" placeholder="FECHA OTORGAMIENTO" readonly="true" value="@bind(vm.instrumento.fecha_otorgamiento)"/>
+			            </auxheader>
+			            <auxheader colspan="1" rowspan="1">
+			                <intbox width="100%" placeholder="NUM. INSTRUMENTO"  value="@bind(vm.instrumento.num_instrumento)"/>
+			            </auxheader>
+			            <auxheader colspan="1" rowspan="1">
+			            	<textbox width="100%" placeholder="NUM. VOLUMEN" value="@bind(vm.instrumento.volumen)"/>
+			            </auxheader>
+			            <auxheader colspan="1" rowspan="1">
+			                <intbox width="100%" placeholder="NUM. SUPLENTE" value="@bind(vm.instrumento.num_suplente)"/>
+			            </auxheader>
+			            <auxheader colspan="1" rowspan="1">
+			                <intbox width="100%" placeholder="NUM. ASOCIADO" value="@bind(vm.instrumento.num_asociado)"/>
+			            </auxheader>
+			        </auxhead>
+					<columns>
+			            <column label="" align="center"/>
+			            <column label="" align="center"/>
+			            <column label="" align="center"/>
+			            <column label="" align="center"/>
+			            <column label="" align="center"/>
+			        </columns>
+				</grid>
+				</groupbox>
+				<space height="30px"/>
+				<groupbox open="true" closable="false">
+					<caption label=". : : P A G O S : : ."/>
+					<div align="left">
+						<button label="A G R E G A R - L I N E A - C A P T U R A" onClick="@command('showAddPago')"/>
+						<grid model="@load(vm.tramite.listaPagos)"
+						rowRenderer="org.CopiasCertificadas.view.vm.copias.pagos.RRPagosVentanillaPF"
+						autopaging="true" mold="paging" pageSize="20" height="150px" >
+							<columns>
+								<column label="LINEA DE CAPTURA" align="center"/>
+								<column label="MONTO" align="center"/>
+								<column label="FECHA" align="center"/>
+								<column label="EDITAR" align="center"/>
+								<column label="ELIMINAR" align="center"/>
+							</columns>
+						</grid>
+					</div>	
+				</groupbox>
+				
+				<div align="right">
+					<button id="btnNewCopiaPersona" label="G U A R D A R : : T R A M I T E" sclass="blue"  onLongOp="@command('send')"/>
+				</div>
+			</div>
+			</div>
+		</center>
+	</borderlayout>
+</panelchildren>
+</panel>
+</zk>

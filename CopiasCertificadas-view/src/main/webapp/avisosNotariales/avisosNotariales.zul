@@ -1,0 +1,84 @@
+<?page title="INTERESADO" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id = "myWindow" title="AVISOS NOTARIALES" border="none" width="90%" height="95%" mode="modal" closable="true"
+apply="org.zkoss.bind.BindComposer, org.CopiasCertificadas.view.vm.lock.MyViewModelLOComposer"
+ viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.avisos.AvisosNotarialesVM')">
+
+		<borderlayout>
+			<center autoscroll="true">
+				<div align="center" width="100%">
+					<groupbox open="true" width="100%">
+						<caption label="AVISO NOTARIAL"></caption>
+						<grid>
+							<auxhead sclass="category-center">
+					            <auxheader label="MODALIDAD DE AVISO" align="center" colspan="1" rowspan="1" />
+					            <auxheader colspan="4" rowspan="1">
+					                <combobox id="cmbModalidad" model="@load(vm.listModalidadAvisos)" width="100%" readonly="true" value="@bind(vm.tramite.avisosNotariales.modalidad)" placeholder="SELECCIONAR. . ."/>
+					            </auxheader>
+					        </auxhead>
+					        <auxhead sclass="category-center">
+					            <auxheader label="DESCRIPCION DE AVISO" align="center" colspan="1" rowspan="1" />
+					            <auxheader colspan="4" rowspan="1">
+					                <textbox id="txtDesc1" rows="5" width="100%"  
+					                onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+					                value="@bind(vm.tramite.avisosNotariales.preDescripcionAviso)" 
+					                placeholder="Agregar una descripcion sobre el aviso . . . . ."/>
+					            </auxheader>
+					        </auxhead>
+					        <auxhead sclass="category-center">
+					            <auxheader label="DOCUMENTO PDF (FIRMADO)" align="center" colspan="2" rowspan="1" />
+					            <auxheader colspan="3" rowspan="1">
+					                <div align="center">
+						                <button id="btnLoadFile" label="CARGAR DOCUMENTO. ." upload="true"  onUpload="@command('unUploadDocumento', upEvent= event)"/>
+						                <space width="25%"/>
+						                <button label="Show PDF" visible="@load(vm.fileuploaded)" onClick="@command('showPDF')"/>
+					                </div>
+					            </auxheader>
+					        </auxhead>
+							<columns>
+					            <column align="center"/>
+					            <column align="center"/>
+					            <column align="center"/>
+					            <column align="center"/>
+					            <column align="center"/>
+					        </columns>
+					        <rows>
+					        </rows>
+						</grid>
+						<space height="15%"/>
+						<groupbox id="gPagos" open="true" closable="false">
+							<caption label=" :: P A G O S ::"/>
+							<div align="left"><button id="btnAgregar" label="A G R E G A R :: L I N E A - D E - C A P T U R A" onClick="@command('showAddPago')"/></div>
+							<grid model="@load(vm.tramite.listaPagos)" rowRenderer="org.CopiasCertificadas.view.vm.RowRendererPagos"
+							autopaging="true" mold="paging" pageSize="20" height="150px" >
+								<columns>
+									<column label="LINEA DE CAPTURA" align="center"/>
+									<column label="MONTO" align="center"/>
+									<column label="FECHA" align="center"/>
+									<column label="EDITAR" align="center"/>
+									<column label="ELIMINAR" align="center"/>
+								</columns>
+							</grid>
+							
+							
+							
+						</groupbox>
+						<div id="descGeneral" visible="false">
+							<label value="DESCRIPCION GENERAL"/>
+							<textbox rows="10" value="@bind(vm.tramite.avisosNotariales.descripcionAviso)" placeholder="DESCRIPCION GENERAL POR PARTE DE PROTOCOLO" width="80%"/>
+						</div>
+					</groupbox>
+					<space height="20PX"/>
+				</div>
+			</center>
+			<south height="50px" border="none">
+				<div align="center">
+					<div height="10px"/>
+					
+					<div align="right"><button id="btnSave" label="G U A R D A R  - A V I S O" sclass="blue" onLongOp="@command('saveAviso', cmp=myWindow)"/></div>
+				</div>
+			</south>
+		</borderlayout>
+	
+</window>
+</zk>

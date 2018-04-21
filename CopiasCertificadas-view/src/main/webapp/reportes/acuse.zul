@@ -1,0 +1,11 @@
+<?page title="ACUSE" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Documento PDF" border="normal" width="50%" height="95%"
+mode="modal"  viewModel="@id('vm') @init('org.CopiasCertificadas.view.reportes.AcuseVM')"
+apply="org.zkoss.bind.BindComposer" closable="true">
+
+	<div align="center">
+		<iframe height="650px" width="100%" id="reportframe" content="@bind(vm.fileContent)"/>
+	</div>
+</window>
+</zk>

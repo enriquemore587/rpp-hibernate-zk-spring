@@ -1,0 +1,31 @@
+<?page title="AGREGANDO PAGO" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="AGREGANDO PAGO" border="normal" height="30%" width="50%" mode="modal"
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.copias.pagos.PagosV_N_VM')" closable="true">
+<borderlayout>
+	<center border="none">
+		<grid>
+			<columns>
+				<column label="LINEA DE CAPTURA" align="center"/>
+				<column label="MONTO" align="center"/>
+				<column label="FECHA" align="center"/>
+			</columns>
+			<rows>
+				<row>
+					<textbox placeholder="00000000000000000000" width="100%" maxlength="20" onChange="self.setValue(self.getValue().toUpperCase());" value="@bind(vm.pagos.linea_captura)"/>
+				
+					<doublebox placeholder="00.0" format=",###.#" width="100%" value="@bind(vm.pagos.importe)"/>
+				
+					<datebox placeholder="FECHA" readonly="true" width="100%" value="@bind(vm.pagos.fecha_pago)"/>
+				</row>
+			</rows>
+		</grid>
+	</center>
+	<south border="none">
+		<div align="center">
+			<button label="AGREGAR" width="50%" onClick="@command('sendPago')"></button>
+		</div>
+	</south>
+</borderlayout>
+</window>
+</zk>

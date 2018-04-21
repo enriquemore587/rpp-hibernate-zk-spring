@@ -1,0 +1,53 @@
+<?page title="REVISION" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="REVISION : : AVISOS" border="normal" apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
+viewModel="@id('vm')@init('org.CopiasCertificadas.view.vm.bandejas.protocoloRevision.revicionAvisosVM')">
+	
+	<borderlayout>
+		<center border="none">
+		<tabbox id="tb" height="100%">
+		    <tabs id="tabs">
+		        <tab label="AVISOS POR COMPLETAR" onClick="@command('updateTable')"/>
+		        <tab label="AVISOS COMPLETADOS" onClick="@command('updateTable2')"/>
+		    </tabs>
+		    <tabpanels>
+		        <tabpanel>
+		        	<grid width="100%" height="100%" autopaging="true" mold="paging" pageSize="30"
+		        	model="@load(vm.lista)" rowRenderer="org.CopiasCertificadas.view.vm.bandejas.protocoloRevision.RowRendererBandejaAvisosProtocolo">
+						<columns>
+							<column label="ID" align="center" width="5%"/>
+							<column align="center" width="15%">
+								<textbox id="folio1" width="100%" placeholder=": : F O L I O : :" onOK="@command('findByFolio1')"/>
+							</column>
+							<column label="FECHA" align="center" width="10%"/>
+							<column label="MODALIDAD" align="center" width="10%"/>							
+							<column align="center" label="ESTATUS" width="11%"/>
+							<column label="VER" align="center" width="5%"/>
+							<column label="EDITAR" align="center" width="6%"/>
+							<column label="COMPLETAR" align="center" width="6%"/>
+						</columns>
+					</grid>
+				</tabpanel>
+		        <tabpanel>
+		        	<grid width="100%" height="100%" autopaging="true" mold="paging" pageSize="30"
+		        	model="@load(vm.lista2)" rowRenderer="org.CopiasCertificadas.view.vm.bandejas.protocoloRevision.RowRendererBandejaAvisosProtocoloCompletados">
+						<columns>
+							<column label="ID" align="center" width="5%"/>
+							<column label="NUM. NOTARIO" align="center" width="10%"/>
+							<column align="center" width="15%">
+								<textbox id="folio2" width="100%" placeholder=": : F O L I O : :" onOK="@command('findByFolio')"/>
+							</column>
+							<column label="FECHA" align="center" width="10%"/>
+							<column label="MODALIDAD" align="center" width="10%"/>
+							<column align="center" label="ESTATUS" width="11%"/>
+							<column label="ACCIONES" align="center" width="5%"/>
+						</columns>
+					</grid>
+				</tabpanel>
+		    </tabpanels>
+		</tabbox>
+			
+		</center>
+	</borderlayout>
+</window>
+</zk>
